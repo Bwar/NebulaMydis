@@ -1,0 +1,73 @@
+{
+	"data_type":["attribute","log"],
+	"data_type_enum":{"attribute":1, "log":2},
+	"section_factor":["imid", "group_id", "string", "userset_id"],
+	"section_factor_enum":{"imid":1, "group_id":2, "string":3, "userset_id":4},
+	"factor_section":{
+		"imid":[10000000, 20000000],
+		"group_id":[100000, 200000],
+		"userset_id":[1000000, 2000000],
+		"string":[4294967295]
+	},
+	"hash_algorithms":{"hash_fnv1a_64":0, "hash_fnv1_64":1, "murmur3_32":2},
+	"hash_algorithm":2,
+	"virtual_node_num":256,
+	"cluster":{
+		"attribute":{
+			"imid":{
+				"LE_10000000":["im_attribute_1", "im_attribute_2", "im_attribute_3", "im_attribute_4"],
+				"LE_20000000":["im_attribute_5", "im_attribute_6", "im_attribute_7", "im_attribute_8"]
+			},
+			"group_id":{
+				"LE_100000":["im_attribute_1", "im_attribute_2", "im_attribute_3", "im_attribute_4"],
+				"LE_200000":["im_attribute_5", "im_attribute_6", "im_attribute_7", "im_attribute_8"]
+			},
+			"userset_id":{
+				"LE_1000000":["im_attribute_1", "im_attribute_2", "im_attribute_3", "im_attribute_4"],
+				"LE_2000000":["im_attribute_5", "im_attribute_6", "im_attribute_7", "im_attribute_8"]
+			},
+			"string":{
+				"LE_4294967295":["im_attribute_account_1", "im_attribute_account_2", "im_attribute_account_3", "im_attribute_account_4"]
+			}
+		},
+		"log":{
+			"imid":{
+				"LE_10000000":["im_log_1", "im_log_2", "im_log_3", "im_log_4"],
+				"LE_20000000":["im_log_5", "im_log_6", "im_log_7", "im_log_8"]
+			},
+			"group_id":{
+				"LE_100000":["im_log_1", "im_log_2", "im_log_3", "im_log_4"],
+				"LE_200000":["im_log_5", "im_log_6", "im_log_7", "im_log_8"]
+			},
+			"userset_id":{
+				"LE_1000000":["im_log_1", "im_log_2", "im_log_3", "im_log_4"],
+				"LE_2000000":["im_log_5", "im_log_6", "im_log_7", "im_log_8"]
+			},
+			"string":{
+				"LE_4294967295":["im_log_1", "im_log_2", "im_log_3", "im_log_4"]
+			}
+		}
+	},
+	"redis_group":{
+		"im_attribute_account_1":{"master":"192.168.18.79:7379", "slave":"192.168.18.80:7379"},
+		"im_attribute_account_2":{"master":"192.168.18.79:7380", "slave":"192.168.18.80:7380"},
+		"im_attribute_account_3":{"master":"192.168.18.79:7381", "slave":"192.168.18.80:7381"},
+		"im_attribute_account_4":{"master":"192.168.18.79:7382", "slave":"192.168.18.80:7382"},
+		"im_attribute_1":{"master":"192.168.18.79:17379", "slave":"192.168.18.80:17379"},
+		"im_attribute_2":{"master":"192.168.18.79:17380", "slave":"192.168.18.80:17380"},
+		"im_attribute_3":{"master":"192.168.18.79:17381", "slave":"192.168.18.80:17381"},
+		"im_attribute_4":{"master":"192.168.18.79:17382", "slave":"192.168.18.80:17382"},
+		"im_attribute_5":{"master":"192.168.18.80:17383", "slave":"192.168.18.79:17383"},
+		"im_attribute_6":{"master":"192.168.18.80:17384", "slave":"192.168.18.79:17384"},
+		"im_attribute_7":{"master":"192.168.18.80:17385", "slave":"192.168.18.79:17385"},
+		"im_attribute_8":{"master":"192.168.18.80:17386", "slave":"192.168.18.79:17386"},
+		"im_log_1":{"master":"192.168.18.79:27379", "slave":"192.168.18.80:27379"},
+		"im_log_2":{"master":"192.168.18.79:27380", "slave":"192.168.18.80:27380"},
+		"im_log_3":{"master":"192.168.18.79:27381", "slave":"192.168.18.80:27381"},
+		"im_log_4":{"master":"192.168.18.79:27382", "slave":"192.168.18.80:27382"},
+		"im_log_5":{"master":"192.168.18.80:27383", "slave":"192.168.18.79:27383"},
+		"im_log_6":{"master":"192.168.18.80:27384", "slave":"192.168.18.79:27384"},
+		"im_log_7":{"master":"192.168.18.80:27385", "slave":"192.168.18.79:27385"},
+		"im_log_8":{"master":"192.168.18.80:27386", "slave":"192.168.18.79:27386"}
+	}
+}
