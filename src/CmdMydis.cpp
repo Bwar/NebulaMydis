@@ -179,7 +179,7 @@ bool CmdMydis::ReadTableRelation()
 {
     LOG4_DEBUG("%s()", __FUNCTION__);
     //配置文件路径查找
-    std::string strConfFile = GetWorkPath() + std::string("conf/mydis/CmdMydisTableRelative.json");
+    std::string strConfFile = GetWorkPath() + std::string("/conf/mydis/CmdMydisTableRelative.json");
     LOG4_DEBUG("CONF FILE = %s.", strConfFile.c_str());
 
     std::ifstream fin(strConfFile.c_str());
