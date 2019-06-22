@@ -195,8 +195,8 @@ bool CmdLocateData::AnyMessage(
     {
         std::stringstream ssSessionId;
         ssSessionId << "mydis::ContextRequest:" << GetSequence();
-        m_pCurrentContext = std::dynamic_pointer_cast<neb::PbContext>(MakeSharedSession(
-                "mydis::ContextRequest", ssSessionId.str(), pChannel, oInMsgHead.cmd(), oInMsgHead.seq(), oInMsgBody));
+        m_pCurrentContext = std::dynamic_pointer_cast<neb::PbContext>(MakeSharedContext(
+                "mydis::ContextRequest", pChannel, oInMsgHead.cmd(), oInMsgHead.seq(), oInMsgBody));
         if (nullptr == m_pCurrentContext)
         {
             return(false);
