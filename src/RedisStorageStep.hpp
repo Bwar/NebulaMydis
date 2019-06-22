@@ -12,7 +12,7 @@
 
 #include "channel/SocketChannel.hpp"
 #include "actor/step/RedisStep.hpp"
-#include "actor/session/Context.hpp"
+#include "actor/context/PbContext.hpp"
 #include "pb/mydis.pb.h"
 #include "SessionRedisNode.hpp"
 

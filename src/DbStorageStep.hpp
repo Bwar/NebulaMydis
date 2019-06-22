@@ -11,7 +11,7 @@
 #define MYDIS_DBSTORAGESTEP_HPP_
 
 #include "actor/step/PbStep.hpp"
-#include "actor/session/Context.hpp"
+#include "actor/context/PbContext.hpp"
 #include "pb/mydis.pb.h"
 #include "SessionRedisNode.hpp"
 

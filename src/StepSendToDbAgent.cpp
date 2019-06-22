@@ -7,8 +7,9 @@
  * @note
  * Modify history:
  ******************************************************************************/
-#include <sstream>
 #include "StepSendToDbAgent.hpp"
+#include <sstream>
+#include <actor/context/PbContext.hpp>
 
 namespace mydis
 {
@@ -119,13 +120,14 @@ neb::E_CMD_STATUS StepSendToDbAgent::Callback(std::shared_ptr<neb::SocketChannel
     LOG4_TRACE("%s()", __FUNCTION__);
     MsgBody oOutMsgBody;
     neb::Result oRsp;
+    std::shared_ptr<neb::PbContext> pSharedContext = std::dynamic_pointer_cast<neb::PbContext>(GetContext());
     if (!oRsp.ParseFromString(oMsgBody.data()))
     {
         LOG4_ERROR("neb::Result oRsp.ParseFromString() failed!");
         if (m_bNeedResponse)
         {
             oOutMsgBody.set_data(oMsgBody.data());
-            if (!SendTo(GetContext()->GetChannel(), GetContext()->GetCmd(), GetContext()->GetSeq(), oOutMsgBody))
+            if (!SendTo(pSharedContext->GetChannel(), pSharedContext->GetCmd(), pSharedContext->GetSeq(), oOutMsgBody))
             {
                 return(neb::CMD_STATUS_FAULT);
             }
@@ -171,7 +173,7 @@ neb::E_CMD_STATUS StepSendToDbAgent::Callback(std::shared_ptr<neb::SocketChannel
         {
             oOutMsgBody.set_data(oMsgBody.data());
         }
-        if (!SendTo(GetContext()->GetChannel(), GetContext()->GetCmd(), GetContext()->GetSeq(), oOutMsgBody))
+        if (!SendTo(pSharedContext->GetChannel(), pSharedContext->GetCmd(), pSharedContext->GetSeq(), oOutMsgBody))
         {
             return(neb::CMD_STATUS_FAULT);
         }

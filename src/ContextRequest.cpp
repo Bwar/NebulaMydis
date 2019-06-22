@@ -12,9 +12,9 @@
 namespace mydis
 {
 
-ContextRequest::ContextRequest(const std::string& strSessionId,
+ContextRequest::ContextRequest(
         std::shared_ptr<neb::SocketChannel> pChannel, int32 iCmd, uint32 uiSeq, const MsgBody& oMsgBody)
-    : neb::Context(strSessionId, pChannel, iCmd, uiSeq, oMsgBody)
+    : neb::PbContext(pChannel, iCmd, uiSeq, oMsgBody)
 {
 }
 

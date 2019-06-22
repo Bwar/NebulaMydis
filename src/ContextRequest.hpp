@@ -10,18 +10,18 @@
 #ifndef MYDIS_CONTEXTREQUEST_HPP_
 #define MYDIS_CONTEXTREQUEST_HPP_
 
-#include "actor/session/Context.hpp"
+#include "actor/context/PbContext.hpp"
 
 namespace mydis
 {
 
-class ContextRequest: public neb::Context,
+class ContextRequest: public neb::PbContext,
     public neb::DynamicCreator<ContextRequest,
-                               std::string, std::shared_ptr<neb::SocketChannel>,
+                               std::shared_ptr<neb::SocketChannel>,
                                int32, uint32, MsgBody>
 {
 public:
-    ContextRequest(const std::string& strSessionId,
+    ContextRequest(
             std::shared_ptr<neb::SocketChannel> pChannel,
             int32 iCmd, uint32 uiSeq,
             const MsgBody& oMsgBody);

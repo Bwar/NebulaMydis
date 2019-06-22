@@ -8,6 +8,7 @@
  * Modify history:
  ******************************************************************************/
 #include "StepDbDistribute.hpp"
+#include <actor/context/PbContext.hpp>
 
 namespace mydis
 {
@@ -23,7 +24,9 @@ StepDbDistribute::~StepDbDistribute()
 
 neb::E_CMD_STATUS StepDbDistribute::Emit(int iErrno, const std::string& strErrMsg, void* data)
 {
-    if (!SendRoundRobin("DBAGENT_R", GetContext()->GetCmd(), GetSequence(), GetContext()->GetMsgBody()))
+    std::shared_ptr<neb::PbContext> pSharedContext = std::dynamic_pointer_cast<neb::PbContext>(GetContext());
+    if (!SendRoundRobin("DBAGENT_R", pSharedContext->GetCmd(),
+                GetSequence(), pSharedContext->GetMsgBody()))
     {
         LOG4_ERROR("SendRoundRobin(\"DBAGENT_R\") error!");
         Response(neb::ERR_DATA_TRANSFER, "SendRoundRobin(\"DBAGENT_R\") error!");
@@ -38,6 +41,7 @@ neb::E_CMD_STATUS StepDbDistribute::Callback(std::shared_ptr<neb::SocketChannel>
     LOG4_DEBUG("%s()", __FUNCTION__);
     MsgBody oOutMsgBody;
     neb::CJsonObject oRspJson;
+    std::shared_ptr<neb::PbContext> pSharedContext = std::dynamic_pointer_cast<neb::PbContext>(GetContext());
     if (!oRspJson.Parse(oInMsgBody.data()))
     {
         LOG4_ERROR("oRspJson.Parse failed!");
@@ -51,7 +55,8 @@ neb::E_CMD_STATUS StepDbDistribute::Callback(std::shared_ptr<neb::SocketChannel>
         oRspJson.Add("redis_node", m_oRedisNode);
         oOutMsgBody.set_data(oRspJson.ToFormattedString());
     }
-    if (!SendTo(GetContext()->GetChannel(), GetContext()->GetCmd() + 1, GetContext()->GetSeq(), oOutMsgBody))
+    if (!SendTo(pSharedContext->GetChannel(),
+                pSharedContext->GetCmd() + 1, pSharedContext->GetSeq(), oOutMsgBody))
     {
         return(neb::CMD_STATUS_FAULT);
     }

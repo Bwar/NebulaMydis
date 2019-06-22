@@ -362,7 +362,7 @@ bool StepReadFromRedis::ReadReplyArrayWithDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%u] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -442,7 +442,7 @@ bool StepReadFromRedis::ReadReplyArrayWithoutDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%u] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -553,7 +553,7 @@ bool StepReadFromRedis::ReadReplyArrayForHashWithoutDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%d] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -585,7 +585,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithDataSet(redisReply* pReply)
     int iDataLen = oRsp.ByteSize();
     if ((pReply->elements % 2) != 0)
     {
-        snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d elements num %u not a even number for hgetall!",
+        snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d elements num %lu not a even number for hgetall!",
                         pReply->type, pReply->elements);
         Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
         return(neb::CMD_STATUS_FAULT);
@@ -623,7 +623,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%d] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -649,7 +649,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", j, pReply->element[j]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%d] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, j, pReply->element[j]->type, pReply->element[j]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -676,7 +676,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithoutDataSet(redisReply* pRepl
     int iDataLen = oRsp.ByteSize();
     if ((pReply->elements % 2) != 0)
     {
-        snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d elements num %u not a even number for hgetall!",
+        snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d elements num %lu not a even number for hgetall!",
                         pReply->type, pReply->elements);
         Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
         return(neb::CMD_STATUS_FAULT);
@@ -707,7 +707,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithoutDataSet(redisReply* pRepl
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%u] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -744,7 +744,7 @@ bool StepReadFromRedis::ReadReplyArrayForHgetallWithoutDataSet(redisReply* pRepl
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", j, pReply->element[j]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%u] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, j, pReply->element[j]->type, pReply->element[j]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);

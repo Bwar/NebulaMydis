@@ -201,7 +201,7 @@ bool StepWriteToRedis::ReadReplyArrayForHashWithoutDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%d] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);
@@ -274,7 +274,7 @@ bool StepWriteToRedis::ReadReplyArrayWithoutDataSet(redisReply* pReply)
         else
         {
             LOG4_ERROR("pReply->element[%d]->type = %d", i, pReply->element[i]->type);
-            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%d] type %d: %s!",
+            snprintf(szErrMsg, sizeof(szErrMsg), "unexprected redis reply type %d and element[%lu] type %d: %s!",
                             pReply->type, i, pReply->element[i]->type, pReply->element[i]->str);
             Response(neb::ERR_UNEXPECTED_REDIS_REPLY, szErrMsg);
             return(false);

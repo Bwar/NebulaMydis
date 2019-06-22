@@ -12,7 +12,7 @@
 
 #include <fstream>
 #include "actor/cmd/Cmd.hpp"
-#include "actor/session/Context.hpp"
+#include "actor/context/PbContext.hpp"
 #include "pb/mydis.pb.h"
 #include "SessionRedisNode.hpp"
 #include "StepDbDistribute.hpp"
@@ -48,7 +48,7 @@ private:
     neb::CJsonObject m_oJsonTableRelative;
     std::map<std::string, std::set<uint32> > m_mapFactorSection; //分段因子区间配置，key为因子类型
 
-    std::shared_ptr<neb::Context> m_pCurrentContext;
+    std::shared_ptr<neb::PbContext> m_pCurrentContext;
     std::shared_ptr<neb::Step> m_pStepDbDistribute;
 };
 

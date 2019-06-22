@@ -195,7 +195,7 @@ bool CmdLocateData::AnyMessage(
     {
         std::stringstream ssSessionId;
         ssSessionId << "mydis::ContextRequest:" << GetSequence();
-        m_pCurrentContext = std::dynamic_pointer_cast<neb::Context>(MakeSharedSession(
+        m_pCurrentContext = std::dynamic_pointer_cast<neb::PbContext>(MakeSharedSession(
                 "mydis::ContextRequest", ssSessionId.str(), pChannel, oInMsgHead.cmd(), oInMsgHead.seq(), oInMsgBody));
         if (nullptr == m_pCurrentContext)
         {
@@ -304,7 +304,7 @@ bool CmdLocateData::DbOnly()
 bool CmdLocateData::RedisAndDb()
 {
     neb::Mydis oMemOperate;
-    oMemOperate.ParseFromString(GetContext()->GetMsgBody().data());
+    oMemOperate.ParseFromString(m_pCurrentContext->GetMsgBody().data());
     char szRedisDataPurpose[16] = {0};
     char szFactor[32] = {0};
     char szErrMsg[128] = {0};

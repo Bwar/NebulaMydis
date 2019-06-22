@@ -8,6 +8,7 @@
  * Modify history:
  ******************************************************************************/
 #include "RedisStorageStep.hpp"
+#include <actor/context/PbContext.hpp>
 
 namespace mydis
 {
@@ -28,7 +29,8 @@ bool RedisStorageStep::Response(int iErrno, const std::string& strErrMsg)
     {
         return(false);
     }
-    return(GetContext()->Response(iErrno, strErrMsg));
+    std::shared_ptr<neb::PbContext> pSharedContext = std::dynamic_pointer_cast<neb::PbContext>(GetContext());
+    return(pSharedContext->Response(iErrno, strErrMsg));
 }
 
 bool RedisStorageStep::Response(const neb::Result& oRsp)
@@ -38,7 +40,8 @@ bool RedisStorageStep::Response(const neb::Result& oRsp)
     {
         return(false);
     }
-    return(GetContext()->Response(oRsp.err_no(), oRsp.SerializeAsString()));
+    std::shared_ptr<neb::PbContext> pSharedContext = std::dynamic_pointer_cast<neb::PbContext>(GetContext());
+    return(pSharedContext->Response(oRsp.err_no(), oRsp.SerializeAsString()));
 }
 
 } /* namespace mydis */
