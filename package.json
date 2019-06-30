@@ -1,0 +1,17 @@
+{
+	"name":"NebulaMydis",
+	"version":"0.9.0",
+	"description":"Nebula Mydis is a data proxy application based on Nebula.",
+	"keywords":["Nebula"],
+	"homepage":"",
+	"bugs":{"url":"", "email":"cqc@vip.qq.com"},
+	"license":"Apache-2.0",
+	"author":{"name":"Bwar", "email":"cqc@vip.qq.com", "url":""},
+	"files":"src/",
+	"main":"",
+	"man":[],
+	"repository":{ "type":"git", "url":"https://github.com/Bwar/NebulaMydis.git"},
+	"dependencies":{
+	     "Bwar/Nebula":"^0.9.0"
+	}
+} 
