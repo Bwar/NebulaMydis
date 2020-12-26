@@ -713,7 +713,7 @@ bool CmdMydis::CheckDbOperate(
 
     for (int i = 0; i < oDbOperate.fields_size(); ++i)
     {
-        if (oDbOperate.fields(i).col_name().size() > 0)
+        if (oDbOperate.fields(i).col_name().size() <= 0)
         {
             snprintf(m_pErrBuff, gc_iErrBuffSize, "the db table \"%s\" field name can not be empty!",
                             oDbOperate.table_name().c_str());

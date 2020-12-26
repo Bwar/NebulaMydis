@@ -1,0 +1,1 @@
+当前NebulaMydis版本所使用的Nebula版本不高于v1.3。Nebula 1.4及之后版本不再使用hiredis作为redis客户端，NebulaMydis需升级后才能使用Nebula 1.4及后续版本。
